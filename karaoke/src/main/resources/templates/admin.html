@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body class="container">
+    <div th:replace="fragments/header :: header"></div>
+    <h2 class="text-center mb-4">Pannello di controllo</h2>
+    <div class="row mb-4">
+        <div class="col text-center custom-btn-group">
+            <form action="/admin/next" method="post" class="d-inline ms-2">
+                <button type="submit" class="btn btn-primary">NEXT SONG</button>
+            </form>
+            <a href="/list" class="btn btn-secondary">LISTA CANZONI</a>
+            <form action="/admin/close" method="post" class="d-inline">
+                <button type="submit" class="btn btn-danger">FINE SERATA</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-4 mb-4" th:each="reservation : ${reservations}">
+            <div class="card">
+                <img th:if="${reservation.photoPath}" 
+                     th:src="@{'/uploads/' + ${reservation.photoPath}}" 
+                     class="card-img-top">
+                <img th:unless="${reservation.photoPath}" 
+                     src="/images/reddead.jpg" 
+                     class="card-img-top">
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${reservation.username}"></h5>
+                    <p class="card-text" th:text="${reservation.song}"></p>
+                    <div th:if="${reservation.nowPlaying}" class="alert alert-success">
+                        Now Playing
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

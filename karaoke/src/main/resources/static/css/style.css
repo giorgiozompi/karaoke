@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Rye&display=swap');
+
+body {
+    background-color: black;
+    color: beige;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.custom-btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-btn-group form,
+.custom-btn-group a {
+    flex: 1;
+    text-align: center;
+}
+
+.custom-btn-group button,
+.custom-btn-group a {
+    width: 100%;
+}
+
+.header {
+    background-color: black;
+    padding: 0px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    border-bottom: none;
+    text-align: center;
+}
+
+.header img {
+    height: 180px;
+}
+
+/* Card container styling for responsive layout */
+.row {
+   gap: 5px;
+   padding: 0;
+   margin: 0 0;
+   max-width: 99%;
+}
+
+.col-sm-6.col-md-4 {
+   flex: 1 1 calc(33.33% - 5px);
+   max-width: calc(33.33% - 5px);
+   padding: 2px;
+}
+
+/* Base card styling */
+.card {
+    position: relative;
+    background-color: transparent !important;
+    border: 2px solid beige !important;
+    color: beige !important;
+    border-radius: 10px;
+    overflow: hidden;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 350px;
+    min-height: 600px; /* Altezza minima */
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('/images/wanted.jpg');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.7;
+    z-index: 0;
+}
+
+.now-playing {
+    text-align: center;
+    margin-top: 10px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: lime; /* Cambia colore a piacere */
+}
+
+
+.card-body {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-wrap: break-word; /* Evita overflow di testo */
+    white-space: normal; /* Permette il testo su più righe */
+}
+
+/* Card content positioning */
+/* .card:has(.card-img-top) .card-body {
+    margin-top: auto;
+}
+
+
+.card:not(:has(.card-img-top))::after {
+    content: '';
+    position: relative;
+    display: block;
+    width: 270px !important;
+    height: 300px !important;
+    margin-top: 230px;
+    margin-bottom: 30px;
+    background-image: url('/images/reddead.jpg');
+    background-size: cover;
+    background-position: center;
+   
+    z-index: 3;
+}
+
+
+.card:not(:has(.card-img-top)) .card-body {
+    margin-top: auto;
+    padding-top: 0;
+} */
+
+.card-img-top {
+    z-index: 3;
+    position: relative;
+    width: 320px !important; /* Larghezza fissa */
+    height: 300px !important; /* Altezza fissa */
+    margin-top: 280px;
+    margin-bottom: 0px;
+    object-fit: cover; /* Mantiene proporzioni senza deformare */
+    transform: rotate(90deg);
+}
+
+
+.card-title, .card-text {
+    font-family: 'Rye', cursive;
+    background: linear-gradient(to bottom, 
+        rgb(71, 45, 0) 0%,
+        rgb(139, 89, 3) 30%,
+        rgb(71, 45, 0) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-size: 1.7rem;
+    text-align: center;
+    margin: 5px 0;
+    font-weight: bold;
+    width: 100%;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+/* Fallback per browser che non supportano il background-clip: text */
+@supports not (background-clip: text) {
+    .card-title, .card-text {
+        color: rgb(71, 45, 0);
+    }
+}
+
+.boh {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.alert-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 1.5rem;
+}
+
+.alert.no-border {
+    border: none !important; /* Rimuove solo il bordo */
+    background-color: transparent !important; /* Assicurati che il colore di sfondo non sia influenzato */
+    padding: 1rem; /* Mantiene il padding per visibilità */
+}
+
+
+.counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    width: 100%;
+}
+
+.alert-info.alert-success {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+}
+
+
+
+
+
+.alert.alert-success {
+    text-align: center;
+    margin-top: 0px;
+    font-weight: bold;
+    font-size: 1.0rem;
+    background-color: green !important;
+    color: white !important; /* Forza il colore del testo */
+    border: none; /* Rimuovi il bordo, se non necessario */
+}
+
+
+
+
+@media (max-width: 768px) {
+    .col-sm-6.col-md-4 {
+        flex: 1 1 calc(50% - 5px);
+        max-width: calc(50% - 5px);
+    }}
+
+@media (max-width: 480px) {
+    .col-sm-6.col-md-4 {
+        flex: 1 1 100%; /* Una card per riga su schermi molto piccoli */
+        max-width: 100%;
+    }
+}
+
+/* Utility styles */
+.btn {
+    background-color: black !important;
+    border: 1px solid beige !important;
+    color: beige !important;
+}
+
+.btn:hover {
+    background-color: beige !important;
+    color: black !important;
+}
+
+.form-control {
+    background-color: black !important;
+    border: 1px solid beige !important;
+    color: beige !important;
+}
+
+.form-control:focus {
+    background-color: black;
+    border-color: beige;
+    box-shadow: 0 0 0 0.2rem rgba(245, 245, 220, 0.25);
+}
+
+.alert {
+    background-color: black !important;
+    border: 1px solid beige !important;
+    color: beige !important;
+}
+
+select option {
+    background-color: black;
+    color: beige;
+}
+
+#videoElement {
+    border: 2px solid beige;
+    border-radius: 4px;
+}
